@@ -16,12 +16,7 @@ if ($currentPolicy -eq 'Restricted') {
     Write-Output "Execution policy is $currentPolicy. No need to change."
 }
 
-# Run the Chocolatey install script with Bypass for the process scope
-Set-ExecutionPolicy Bypass -Scope Process -Force
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
-choco install -y python3
+Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe" -OutFile "python-installer.exe"
 
 python --version
 
