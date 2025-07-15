@@ -1,6 +1,8 @@
 # Check the current execution policy
 $currentPolicy = Get-ExecutionPolicy
 
+clear
+
 if ($currentPolicy -eq 'Restricted') {
     Write-Output "Execution policy is Restricted. Setting to AllSigned..."
     try {
